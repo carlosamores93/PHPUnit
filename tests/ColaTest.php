@@ -34,5 +34,9 @@ class ColaTest extends TestCase
         $this->cola->push('klk');
         $this->cola->pop();
         $this->assertEquals(0, $this->cola->getCount());
+        $this->cola->push('Carlos');
+        $this->cola->push('Amores');
+        $amores = $this->cola->pop();
+        $this->assertEquals('Carlos', $amores);
     }
 }
