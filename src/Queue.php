@@ -5,6 +5,12 @@
  */
 class Queue
 {
+
+    /**
+     * Max number items in the queue
+     */
+    public const MAX_ITEMS = 5;
+
     /**
      * Queue items
      *
@@ -19,6 +25,9 @@ class Queue
      */
     public function push($item)
     {
+        if ($this->getCount() === self::MAX_ITEMS) {
+            throw new QueueException('Queue is full');
+        }
         $this->items[] = $item;
     }
 

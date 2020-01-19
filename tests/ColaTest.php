@@ -39,4 +39,23 @@ class ColaTest extends TestCase
         $amores = $this->cola->pop();
         $this->assertEquals('Carlos', $amores);
     }
+
+    public function testMaxNumberOfItemsCanBeAdded()
+    {
+        for ($i=0; $i < Queue::MAX_ITEMS; $i++) { 
+            $this->cola->push($i);
+        }
+        $this->assertEquals(Queue::MAX_ITEMS, $this->cola->getCount());
+    }
+
+    public function testExceptionThrowMaxNumberOfItemsCanBeAdded()
+    {
+        for ($i = 0; $i < Queue::MAX_ITEMS; $i++) {
+            $this->cola->push($i);
+        }
+        $this->expectException(QueueException::class);
+        $this->expectExceptionMessage('Queue is full');
+        $this->cola->push('Esto va a producir una excepción');
+
+    }
 }
