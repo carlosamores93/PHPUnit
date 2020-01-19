@@ -41,4 +41,14 @@ class Queue
     {
         return count($this->items);
     }
+
+    /**
+     * Remove all element to the queue
+     *
+     * @return void
+     */
+    public function clear()
+    {
+        $this->items = [];
+    }
 }
